@@ -1,0 +1,30 @@
+{
+    "expo": {
+        "name": "Kotihuolto",
+        "slug": "Kotihuolto",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/logo-transparent-downscaled.png",
+        "newArchEnabled": true,
+        "splash": {
+            "image": "./assets/logo-transparent-downscaled.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#00A86B"
+        },
+        "ios": {
+            "supportsTablet": true
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/logo-transparent-downscaled.png",
+                "backgroundColor": "#00A86B"
+            },
+            "edgeToEdgeEnabled": true,
+            "predictiveBackGestureEnabled": false,
+            "package": "com.eemi00.Kotihuolto"
+        },
+        "web": {
+            "favicon": "./assets/logo.png"
+        }
+    }
+}
