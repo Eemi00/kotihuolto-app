@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
     // Safearea
     safe: {
         flex: 1,
-        backgroundColor: '#121212'
+        backgroundColor: '#1f1f1f'
     },
 
     // Headerin tyylitykset
