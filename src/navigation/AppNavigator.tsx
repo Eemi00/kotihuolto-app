@@ -9,6 +9,9 @@ import HomeScreen from '../screens/HomeScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import CreateCardScreen from '../screens/CreateCardScreen'
 import InstructionsScreen from '../screens/InstructionsScreen'
+import NotificationSettingsScreen from '../screens/settingScreens/NotificationSettingsScreen'
+import PreferencesScreen from '../screens/settingScreens/PreferencesScreen'
+import AccountSettingsScreen from '../screens/settingScreens/AccountSettingsScreen'
 
 // Määritellään screenit
 export type RootStackParamList = {
@@ -18,6 +21,9 @@ export type RootStackParamList = {
     Settings: undefined
     CreateCard: { cardId?: string } | undefined
     Instructions: { cardId: string }
+    NotificationSettings: undefined
+    Preferences: undefined
+    AccountSettings: undefined
 }
 
 // Määritellään screenien stack
@@ -45,6 +51,9 @@ export default function AppNavigator() {
                         <Stack.Screen name="Settings" component={SettingsScreen} />
                         <Stack.Screen name="CreateCard" component={CreateCardScreen} />
                         <Stack.Screen name="Instructions" component={InstructionsScreen} />
+                        <Stack.Screen name="NotificationSettings" component={NotificationSettingsScreen} />
+                        <Stack.Screen name="AccountSettings" component={AccountSettingsScreen} />
+                        <Stack.Screen name="Preferences" component={PreferencesScreen} />
                     </>
                 ) : (
                     // Login sivulle jos ei ole kirjautunut
