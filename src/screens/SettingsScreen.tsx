@@ -14,12 +14,10 @@ export default function HomeScreen() {
 
     const navigation = useNavigation<Nav>()
 
-    const onLogout = async () => {
-        await signOut(auth)
-    }
-
     return (
         <SafeAreaView style={styles.safeArea}>
+
+            {/* Headeri */}
             <View style={styles.header}>
                 <View style={styles.headerLeft}>
                     <Icon name="settings-outline" size={20} color="#7cc0ff" style={{ marginRight: 8 }} />
@@ -27,7 +25,13 @@ export default function HomeScreen() {
                 </View>
             </View>
 
+            <View style={styles.space}>
+                <Text style={styles.spaceSubtitle}>Tili</Text>
+            </View>
+
+            {/* Itemit */}
             <View style={styles.menu}>
+
                 <TouchableOpacity style={styles.row} onPress={() => navigation.navigate('AccountSettings')}>
                     <Icon name="person-outline" size={20} color="#fff" style={styles.icon} />
                     <Text style={styles.label}>Käyttäjä</Text>
@@ -39,6 +43,7 @@ export default function HomeScreen() {
                     <Text style={styles.label}>Ilmoitukset</Text>
                     <Icon name="chevron-forward-outline" size={20} color="#aaa" style={styles.chevron} />
                 </TouchableOpacity>
+
             </View>
 
             {/* Pidä bottombar aina alimpana */}
@@ -49,10 +54,13 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
 
+    // Safearea
     safeArea: {
         flex: 1,
         backgroundColor: '#1f1f1f',
     },
+
+    // Headeri
     header: {
         paddingHorizontal: 16,
         paddingVertical: 12,
@@ -70,6 +78,19 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '600',
     },
+
+    // Väli menun ja headerin väliin
+    space: {
+        paddingHorizontal: 20,
+        paddingVertical: 8,
+        backgroundColor: '#444',
+    },
+    spaceSubtitle: {
+        color: '#fff',
+        fontWeight: '600',
+    },
+
+    // menu itemit
     menu: {
         borderTopColor: '#3a3a3a',
         borderTopWidth: StyleSheet.hairlineWidth,
