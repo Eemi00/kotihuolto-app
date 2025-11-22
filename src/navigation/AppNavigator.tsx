@@ -9,6 +9,7 @@ import HomeScreen from '../screens/HomeScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import CreateCardScreen from '../screens/CreateCardScreen'
 import InstructionsScreen from '../screens/InstructionsScreen'
+import VerifyEmailScreen from '../screens/VerifyEmailScreen'
 
 // Settings screenit
 import Account from '../screens/settingScreens/Account'
@@ -24,6 +25,7 @@ export type RootStackParamList = {
     Settings: undefined
     CreateCard: { cardId?: string } | undefined
     Instructions: { cardId: string }
+    VerifyEmail: undefined
 
     Account: undefined
     Notifications: undefined
@@ -56,9 +58,12 @@ export default function AppNavigator() {
                         <Stack.Screen name="Settings" component={SettingsScreen} />
                         <Stack.Screen name="CreateCard" component={CreateCardScreen} />
                         <Stack.Screen name="Instructions" component={InstructionsScreen} />
+                        <Stack.Screen name="VerifyEmail" component={VerifyEmailScreen} />
 
                         {/* Settings tabit */}
-                        <Stack.Screen name="Account" component={Account} />
+                        <Stack.Screen name="Account">
+                            {props => <Account {...props} user={user!} />}
+                        </Stack.Screen>
                         <Stack.Screen name="Notifications" component={Notifications} />
                         <Stack.Screen name="Security" component={Security} />
                         <Stack.Screen name="Support" component={Support} />

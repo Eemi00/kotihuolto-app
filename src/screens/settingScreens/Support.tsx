@@ -18,7 +18,6 @@ export default function Support() {
                         <Icon name="arrow-back-outline" size={22} color="#7cc0ff" style={{ marginRight: 6 }} />
                         <Text style={styles.back}>Takaisin</Text>
                     </TouchableOpacity>
-                    {/* Näytetään oikea title sen mukaan muokkaatko vai luotko korttia */}
                     <Text style={styles.headerTitle}>Apu & Tuki</Text>
                 </View>
 
