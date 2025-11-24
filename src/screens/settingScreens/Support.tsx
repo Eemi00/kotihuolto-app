@@ -40,8 +40,8 @@ export default function Support() {
                     <Text style={styles.articleTitle}>Usein kysytyt kysymykset</Text>
 
                     <View style={styles.item}>
-                        <Text style={styles.itemTitle}>Testi</Text>
-                        <Text style={styles.itemDesc}>testi desci</Text>
+                        <Text style={styles.itemTitle}>Haluatko vaihtaa sähköpostisi?</Text>
+                        <Text style={styles.itemDesc}>testi descriptioni</Text>
                     </View>
 
                 </View>
