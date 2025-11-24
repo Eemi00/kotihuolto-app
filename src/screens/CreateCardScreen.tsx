@@ -9,6 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import Icon from 'react-native-vector-icons/Ionicons'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CreateCard'>
 
@@ -23,6 +24,7 @@ export default function CreateCardScreen({ navigation, route }: Props) {
     const [showPicker, setShowPicker] = useState(false)
     const [loading, setLoading] = useState(!!editingId)
     const userId = auth.currentUser?.uid
+    const [notifEnabled, setNotifEnabled] = useState<boolean>(true)
 
     // intervalli päivien valitsemiseen
     const [repeatInterval, setRepeatInterval] = useState(1)
@@ -49,6 +51,16 @@ export default function CreateCardScreen({ navigation, route }: Props) {
         }
         load()
     }, [editingId])
+
+
+    // Ladataan notification asetukset
+    useEffect(() => {
+        const loadNotifSetting = async () => {
+            const state = await AsyncStorage.getItem("notificationsEnabled")
+            setNotifEnabled(state === "true")
+        }
+        loadNotifSetting()
+    }, [])
 
     // Määritellään ohjeitten format
     const addStep = () => setSteps([...steps, ''])
@@ -103,34 +115,36 @@ export default function CreateCardScreen({ navigation, route }: Props) {
                 })
             }
 
-            try {
-                // Määritellään notification kun aika loppuu kortista
-                await Notifications.scheduleNotificationAsync({
-                    content: {
-                        title: 'Huoltokirjan muistutus',
-                        body: `Aika tehdä: ${title}`,
-                    },
-                    trigger: { type: 'date', date: timerEndDate } as any,
-                })
+            // Määritellään notification kun aika loppuu kortista
+            if (notifEnabled) {
+                try {
+                    // Määritellään notification kun aika loppuu kortista
+                    await Notifications.scheduleNotificationAsync({
+                        content: {
+                            title: 'Huoltokirjan muistutus',
+                            body: `Aika tehdä: ${title}`,
+                        },
+                        trigger: { type: 'date', date: timerEndDate } as any,
+                    })
 
-                // Sitten asetetaan uusi timer kun alkuperäinen loppuu
-                // Asetetaan se käyttäjän valitsemisen mukaan kuinka usein ilmoitus tulee
-                let seconds = 0
-                if (repeatUnit === 'days') seconds = repeatInterval * 60 * 60 * 24
-                if (repeatUnit === 'weeks') seconds = repeatInterval * 60 * 60 * 24 * 7
-                if (repeatUnit === 'months') seconds = repeatInterval * 60 * 60 * 24 * 30
-                if (repeatUnit === 'years') seconds = repeatInterval * 60 * 60 * 24 * 365
+                    // Sitten asetetaan uusi timer kun alkuperäinen loppuu
+                    // Asetetaan se käyttäjän valitsemisen mukaan kuinka usein ilmoitus tulee
+                    let seconds = 0
+                    if (repeatUnit === 'days') seconds = repeatInterval * 60 * 60 * 24
+                    if (repeatUnit === 'weeks') seconds = repeatInterval * 60 * 60 * 24 * 7
+                    if (repeatUnit === 'months') seconds = repeatInterval * 60 * 60 * 24 * 30
+                    if (repeatUnit === 'years') seconds = repeatInterval * 60 * 60 * 24 * 365
 
-                // Toistuva notification
-                await Notifications.scheduleNotificationAsync({
-                    content: {
-                        title: 'Huoltokirjan muistutus',
-                        body: `Aika tehdä: ${title}`,
-                    },
-                    trigger: { type: 'timeInterval', seconds, repeats: true } as any,
-                })
-            } catch {
-
+                    // Toistuva notification
+                    await Notifications.scheduleNotificationAsync({
+                        content: {
+                            title: 'Huoltokirjan muistutus',
+                            body: `Aika tehdä: ${title}`,
+                        },
+                        trigger: { type: 'timeInterval', seconds, repeats: true } as any,
+                    })
+                } catch {
+                }
             }
 
             // Näytetään tallennettu alert, määritellään desc sen mukaan loitko vai muokkaistko korttia

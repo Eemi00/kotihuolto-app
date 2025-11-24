@@ -30,7 +30,7 @@ export default function Support() {
                         <Icon name="search-outline" size={20} color="#fff" style={styles.searchIcon} />
                         <TextInput
                             style={styles.searchInput}
-                            placeholder='Etsi huoltoja...'
+                            placeholder='Etsi artikkeleja...'
                             placeholderTextColor="#dfebebff"
                         />
                     </View>
@@ -40,8 +40,8 @@ export default function Support() {
                     <Text style={styles.articleTitle}>Usein kysytyt kysymykset</Text>
 
                     <View style={styles.item}>
-                        <Text style={styles.itemTitle}>Miksi en saanut ilmoitusta huollosta?</Text>
-                        <Text style={styles.itemDesc}></Text>
+                        <Text style={styles.itemTitle}>Testi</Text>
+                        <Text style={styles.itemDesc}>testi desci</Text>
                     </View>
 
                 </View>
@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
 
     // Hero osio
     hero: {
-        experimental_backgroundImage: 'linear-gradient( #10270aff, #377725)',
         height: 200,
         width: '100%',
         justifyContent: 'center',
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
     searchContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#ffffff5e',
+        backgroundColor: '#7575755e',
         margin: 16,
         borderRadius: 8,
         paddingHorizontal: 12,
@@ -132,11 +131,15 @@ const styles = StyleSheet.create({
     // Artikkeli itemi
     item: {
         padding: 20,
+        alignItems: 'center',
     },
     itemTitle: {
         color: '#fff',
         fontSize: 16,
         paddingVertical: 6,
+    },
+    itemDesc: {
+        color: '#bbb',
     },
 
 })

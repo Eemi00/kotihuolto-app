@@ -42,10 +42,14 @@ export default function Account({ user, navigation }: Props) {
 }
 
 const styles = StyleSheet.create({
+
+    // Safe osio
     safe: {
         flex: 1,
         backgroundColor: '#1f1f1f',
     },
+
+    // Headeri
     header: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -64,9 +68,13 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '500',
     },
+
+    // Näyttö
     container: {
         padding: 20,
     },
+
+    // Itemi
     item: {
         marginBottom: 24,
     },
