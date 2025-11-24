@@ -67,11 +67,13 @@ export default function InstructionsScreen({ route }: Props) {
 
             {/* Header */}
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Icon name="arrow-back-outline" size={22} color="#7cc0ff" style={{ marginRight: 6 }} />
-                    <Text style={styles.back}>Takaisin</Text>
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                    style={{ flexDirection: 'row', alignItems: 'center' }}
+                >
+                    <Icon name="arrow-back-outline" size={20} color="#fff" style={styles.icon} />
                 </TouchableOpacity>
-                <Text style={styles.title}>{card.title}</Text>
+                <Text style={styles.headerTitle}>{card.title}</Text>
             </View>
 
             {/* Ohjeet */}
@@ -98,15 +100,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         padding: 12,
+        borderBottomWidth: 1,
+        borderColor: '#444',
     },
-    back: {
-        color: '#7cc0ff',
-        marginRight: 12,
+    icon: {
+        marginRight: 15,
+        backgroundColor: '#333',
+        padding: 8,
+        borderRadius: 50,
     },
-    title: {
+    headerTitle: {
         color: '#fff',
         fontSize: 20,
-        fontWeight: '700',
+        fontWeight: '500',
     },
     center: {
         flex: 1,

@@ -14,9 +14,11 @@ export default function Support() {
 
                 {/* Headeri */}
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <Icon name="arrow-back-outline" size={22} color="#7cc0ff" style={{ marginRight: 6 }} />
-                        <Text style={styles.back}>Takaisin</Text>
+                    <TouchableOpacity
+                        onPress={() => navigation.goBack()}
+                        style={{ flexDirection: 'row', alignItems: 'center' }}
+                    >
+                        <Icon name="arrow-back-outline" size={20} color="#fff" style={styles.icon} />
                     </TouchableOpacity>
                     <Text style={styles.headerTitle}>Apu & Tuki</Text>
                 </View>
@@ -36,7 +38,7 @@ export default function Support() {
 
                 <View style={styles.articles}>
                     <Text style={styles.articleTitle}>Usein kysytyt kysymykset</Text>
-                    
+
                     <View style={styles.item}>
                         <Text style={styles.itemTitle}>Miksi en saanut ilmoitusta huollosta?</Text>
                         <Text style={styles.itemDesc}></Text>
@@ -65,9 +67,11 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: '#444',
     },
-    back: {
-        color: '#7cc0ff',
-        marginRight: 12,
+    icon: {
+        marginRight: 15,
+        backgroundColor: '#333',
+        padding: 8,
+        borderRadius: 50,
     },
     headerTitle: {
         color: '#fff',

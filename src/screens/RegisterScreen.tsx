@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, KeyboardAvoidingView, ScrollView } from 'react-native'
-import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from 'firebase/auth'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../firebase/config'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../navigation/AppNavigator'
@@ -36,9 +36,9 @@ export default function RegisterScreen({ navigation }: Props) {
             // Luodaan uusi käyttäjä
             const cred = await createUserWithEmailAndPassword(auth, email.trim(), password)
             await updateProfile(cred.user, { displayName: trimmedName })
-            await sendEmailVerification(cred.user)
 
-            navigation.navigate("VerifyEmail")
+            // Suoraan kirjautumisen jälkeen siirrytään vaikka etusivulle
+            navigation.navigate("Login")
         } catch (e: any) {
             // Annetaan errori jos jokin meni pieleen
             const message = getAuthErrorMessage(e.code)
@@ -85,7 +85,7 @@ export default function RegisterScreen({ navigation }: Props) {
                         onChangeText={setPassword}
                         style={styles.input}
                     />
-                    <TextInput 
+                    <TextInput
                         placeholder="Vahvista salasana"
                         placeholderTextColor="#888"
                         secureTextEntry={true}

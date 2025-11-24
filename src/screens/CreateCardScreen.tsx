@@ -154,11 +154,12 @@ export default function CreateCardScreen({ navigation, route }: Props) {
 
             {/* Headeri */}
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => nav.goBack()} style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Icon name="arrow-back-outline" size={22} color="#7cc0ff" style={{ marginRight: 6 }} />
-                    <Text style={styles.back}>Takaisin</Text>
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                    style={{ flexDirection: 'row', alignItems: 'center' }}
+                >
+                    <Icon name="arrow-back-outline" size={20} color="#fff" style={styles.icon} />
                 </TouchableOpacity>
-                {/* Näytetään oikea title sen mukaan muokkaatko vai luotko korttia */}
                 <Text style={styles.headerTitle}>{editingId ? 'Muokkaa kotihuoltoa' : 'Luo kotihuolto'}</Text>
             </View>
 
@@ -273,14 +274,16 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: '#444',
     },
-    back: {
-        color: '#7cc0ff',
-        marginRight: 12,
+    icon: {
+        marginRight: 15,
+        backgroundColor: '#333',
+        padding: 8,
+        borderRadius: 50,
     },
     headerTitle: {
         color: '#fff',
         fontSize: 20,
-        fontWeight: '700',
+        fontWeight: '500',
     },
 
     // Global tyylitykset

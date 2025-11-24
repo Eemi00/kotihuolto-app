@@ -12,19 +12,19 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Account'> & {
 export default function Account({ user, navigation }: Props) {
     return (
         <SafeAreaView style={styles.safe}>
-            {/* Header */}
+
+            {/* Headeri */}
             <View style={styles.header}>
                 <TouchableOpacity
                     onPress={() => navigation.goBack()}
                     style={{ flexDirection: 'row', alignItems: 'center' }}
                 >
-                    <Icon name="arrow-back-outline" size={22} color="#7cc0ff" style={{ marginRight: 6 }} />
-                    <Text style={styles.back}>Takaisin</Text>
+                    <Icon name="arrow-back-outline" size={20} color="#fff" style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.headerTitle}>Käyttäjä</Text>
             </View>
 
-            {/* User info */}
+            {/* käyttäjätiedot */}
             <View style={styles.container}>
                 <View style={styles.item}>
                     <Text style={styles.label}>Käyttäjänimi</Text>
@@ -36,6 +36,7 @@ export default function Account({ user, navigation }: Props) {
                     <Text style={styles.value}>{user?.email ?? "—"}</Text>
                 </View>
             </View>
+
         </SafeAreaView>
     )
 }
@@ -52,9 +53,11 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: '#444',
     },
-    back: {
-        color: '#7cc0ff',
-        marginRight: 12,
+    icon: {
+        marginRight: 15,
+        backgroundColor: '#333',
+        padding: 8,
+        borderRadius: 50,
     },
     headerTitle: {
         color: '#fff',
