@@ -38,6 +38,7 @@ export default function HomeScreen({ user }: Props) {
     const [filteredCards, setFilteredCards] = useState<CardItem[]>([])
     const [search, setSearch] = useState('')
     const [loading, setLoading] = useState(true)
+    const [sorted, setSorted] = useState<'uusin' | 'vanhin' | 'A-Ö' | 'Ö-A'>('uusin')
 
     const userId = user.uid
     const userName = user.displayName

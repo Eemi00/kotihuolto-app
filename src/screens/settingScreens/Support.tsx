@@ -50,7 +50,7 @@ export default function Support() {
                         <View style={styles.itemContent}>
                             <Text style={styles.itemTitle}>Miten luon uuden kortin?</Text>
                             <Text style={styles.itemDesc}>
-                                Paina “+” -painiketta kotisivulla, lisää otsikko, ohjeet ja aseta muistutusaika.
+                                Paina "+" -painiketta kotisivulla, lisää otsikko, ohjeet ja aseta muistutusaika.
                             </Text>
                         </View>
                     </View>
