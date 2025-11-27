@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator, Alert, TextInput, Image, ImageBackground } from 'react-native'
 import { signOut } from 'firebase/auth'
+import Calendar from '../components/Calendar'
 import { auth, db } from '../firebase/config'
 import BottomBar, { BOTTOM_BAR_HEIGHT } from '../components/BottomBar'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -137,6 +138,9 @@ export default function HomeScreen({ user }: Props) {
                 </TouchableOpacity>
             </View>
 
+            {/* Kalenteri */}
+            <Calendar />
+
             {/* Haku osio */}
             <View style={styles.searchContainer}>
                 <Icon name="search-outline" size={20} color="#aaa" style={styles.searchIcon} />
@@ -162,14 +166,6 @@ export default function HomeScreen({ user }: Props) {
                     bounces={false}
                     overScrollMode='never'
                 >
-
-                    {/* Iconi osio pelkästään modernimpaa tyyliä varten */}
-                    <View style={styles.iconSection}>
-                        <Icon name="bulb" size={24} color="#ff8b8bff" style={[styles.icons, { backgroundColor: '#ff686842', }]} />
-                        <Icon name="call" size={24} color="#a545ffff" style={[styles.icons, { backgroundColor: '#c73bff42', }]} />
-                        <Icon name="calendar-number" size={24} color="#00ffff" style={[styles.icons, { backgroundColor: '#5ef4ff57', }]} />
-                        <Icon name="hammer" size={24} color="#4092f0ff" style={[styles.icons, { backgroundColor: '#2b6eff60', }]} />
-                    </View>
 
                     <Text style={styles.subtitle}>Kotihuollot</Text>
 
@@ -262,17 +258,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 16,
         paddingVertical: 8,
-    },
-
-    // Iconi osio
-    iconSection: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 8,
-    },
-    icons: {
-        padding: 14,
-        borderRadius: 50,
     },
 
     // Global tyylitykset
