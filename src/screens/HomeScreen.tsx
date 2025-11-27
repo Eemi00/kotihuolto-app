@@ -12,6 +12,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../navigation/AppNavigator'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { User } from 'firebase/auth'
+import Header from '../components/Header'
 
 type Nav = NativeStackNavigationProp<RootStackParamList, 'Home'>
 
@@ -126,17 +127,12 @@ export default function HomeScreen({ user }: Props) {
         <SafeAreaView style={styles.safeArea}>
 
             {/* Headeri */}
-            <View style={styles.header}>
-                <View style={styles.headerLeft}>
-                    <Icon name="home-outline" size={20} color="#7cc0ff" style={{ marginRight: 8 }} />
-                    {/* Käyttäjän käyttäjänimi */}
-                    <Text style={styles.headerTitle}>{headerTitle}</Text>
-                </View>
-
-                <TouchableOpacity onPress={onLogout}>
-                    <Text style={{ color: '#7cc0ff' }}>Kirjaudu ulos</Text>
-                </TouchableOpacity>
-            </View>
+            <Header
+                title={headerTitle}
+                iconName="home-outline"
+                showLogout
+                onLogout={onLogout}
+            />
 
             {/* Kalenteri */}
             <Calendar />

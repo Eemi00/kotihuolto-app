@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../navigation/AppNavigator'
 import Icon from 'react-native-vector-icons/Ionicons'
+import Header from '../components/Header'
 
 type Nav = NativeStackNavigationProp<RootStackParamList, 'Settings'>
 
@@ -50,12 +51,10 @@ export default function HomeScreen() {
         <SafeAreaView style={styles.safeArea}>
 
             {/* Headeri */}
-            <View style={styles.header}>
-                <View style={styles.headerLeft}>
-                    <Icon name="settings-outline" size={20} color="#7cc0ff" style={{ marginRight: 8 }} />
-                    <Text style={styles.headerTitle}>Asetukset</Text>
-                </View>
-            </View>
+            <Header
+                title="Asetukset"
+                iconName="settings-outline"
+            />
 
             <View style={styles.space}>
                 <Text style={styles.spaceSubtitle}>Tili</Text>
