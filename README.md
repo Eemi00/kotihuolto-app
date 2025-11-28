@@ -1,4 +1,4 @@
-# Kotihuolto mobiili sovelluis
+# Kotihuolto mobiili sovellus
 
 ## Yleiskatsaus
 Projekti oli koulun react nativen lopputyö. Tässä sovelluksessa ei siis ole supporttia. Käyttö omalla vastuulla.
